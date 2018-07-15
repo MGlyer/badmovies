@@ -4,6 +4,7 @@ import $ from 'jquery';
 // import AnyComponent from './components/filename.jsx'
 import Search from './components/Search.jsx'
 import Movies from './components/Movies.jsx'
+import Axios from 'axios'
 
 class App extends React.Component {
   constructor(props) {

@@ -22,3 +22,7 @@ https://developers.themoviedb.org/3/getting-started/introduction
 --------
 
 *To start the server and start webpack check out package.json*
+
+
+example api request 
+https://api.themoviedb.org/3/movie/550?api_key=a11656b42e2c59147e25c45a3f244c3a
