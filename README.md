@@ -11,9 +11,9 @@ Learn the fundamentals of application structure and database integration by maki
 
 [COMPLETE] Movies should be sorted to show the movies with horrible ratings first (figure out how to modify the API endpoint to do so)
 
-[ ] User should be able to click on a movie within the search results in order to save it to their favorites (mySQL database, you must make your own Schema)
+[COMPLETE] User should be able to click on a movie within the search results in order to save it to their favorites (mySQL database, you must make your own Schema)
 
-[ ] If a user is viewing their favorites they should be able to delete a movie from their favorites by clicking on it
+[COMPLETE] If a user is viewing their favorites they should be able to delete a movie from their favorites by clicking on it
 
 ### The API for the application:
 
