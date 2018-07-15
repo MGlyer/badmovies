@@ -15,10 +15,8 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.post('/search', function(req, res) {
     let searchGenre = req.body.genre
     console.log('in the server! searching for: ', searchGenre)
-    // axios.get(`https://api.themoviedb.org/3/discover/movie?page=1&include_video=false&include_adult=false&with_genres=${searchGenre}&sort_by=popularity.asc&language=en-US&api_key=${APIKEY}`)
     axios.get(`https://api.themoviedb.org/3/discover/movie?page=1&include_video=false&include_adult=false&with_genres=${searchGenre}&sort_by=popularity.asc&language=en-US&api_key=${APIKEY}`)
          .then((response) => {
-             console.log('response from movie db: ', response.data)
              res.send(response.data)
          })
          .catch((err) => {

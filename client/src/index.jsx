@@ -11,8 +11,8 @@ class App extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-      movies: [{deway: "movies"}],
-      favorites: [{deway: "favorites"}],
+      movies: [],
+      favorites: [],
       showFaves: false,
       currentGenre: 'Action'
     };
@@ -45,6 +45,9 @@ class App extends React.Component {
     axios.post('/search', {genre: searchID})
          .then((response) => {
            console.log('from the server: ', response.data)
+           this.setState({
+             movies: response.data.results
+           })
          })
          .catch((err) => {
            console.log('something went wrong: ', err)
