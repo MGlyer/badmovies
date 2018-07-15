@@ -7,7 +7,7 @@ Learn the fundamentals of application structure and database integration by maki
 
 [ ] User should be allowed to search for movies by genre
 
-[ ] User should be given a list of official genres to choose from
+[COMPLETE] User should be given a list of official genres to choose from
 
 [ ] Movies should be sorted to show the movies with horrible ratings first (figure out how to modify the API endpoint to do so)
 
