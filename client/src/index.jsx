@@ -55,6 +55,12 @@ class App extends React.Component {
   }
 
   saveMovie(movie) {
+    console.log(`we're saving a movie!!!!!`, movie)
+    let currentFaves = this.state.favorites.slice()
+    currentFaves.push(movie)
+    this.setState({
+      favorites: currentFaves
+    })
     axios.post('/save', {newFave: movie})
           .then((response) => {
             console.log('from the server: ', response.data)
@@ -65,7 +71,19 @@ class App extends React.Component {
   }
 
   deleteMovie(movie) {
-    axios.post('/delete', {toDel: movie})
+    console.log(`how sad to see this movie go: `, movie)
+    let currentFaves = this.state.favorites.slice()
+    let ind = 0
+    for (var i = 0; i < currentFaves.length; i++) {
+      if (currentFaves[i].title === movie.title) {
+        ind =  i
+      }
+    }
+    currentFaves.splice(ind,1)
+    this.setState({
+      favorites: currentFaves
+    })
+    axios.post('/delete', {toDel: movie.title})
           .then((response) => {
             console.log('from the server: ', response.data)
           })
@@ -88,7 +106,7 @@ class App extends React.Component {
         
         <div className="main">
           <Search swapFavorites={this.swapFavorites} showFaves={this.state.showFaves} switchGenre = {this.swapGenre} search = {this.getMovies}/>
-          <Movies movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>
+          <Movies save ={this.saveMovie} delete ={this.deleteMovie} movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>
         </div>
       </div>
     );

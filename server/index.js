@@ -4,6 +4,7 @@ var request = require('request')
 var app = express();
 const APIKEY = require('./config').API_KEY
 const axios = require('axios')
+var database = require('./database')
 
 var apiHelpers = require('./apiHelpers.js');
 
@@ -25,18 +26,15 @@ app.post('/search', function(req, res) {
 });
 
 app.get('/genres', function(req, res) {
+    // console.log('in the server, looking for genres')
     axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${APIKEY}`)
          .then((response) => {
+            //  console.log('in the server, response of genres', response.data)
              res.send(response.data)
          })
          .catch((err) => {
              console.error(err)
          })
-    // make an axios request to get the list of official genres
-    
-    // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
-
-    // send back
 });
 
 app.post('/save', function(req, res) {

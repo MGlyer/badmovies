@@ -6,20 +6,20 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      genres: genres.genres
+      genres: []
     };
     this.getGenres = this.getGenres.bind(this)
   }
 
   componentDidMount() {
-    // this.getGenres()
+    this.getGenres()
   }
 
   getGenres() {
     axios.get(`/genres`)
          .then((response) => {
            this.setState({
-             genres: response.genres
+             genres: response.data.genres
            })
          })
          .catch((err) => {
@@ -32,10 +32,6 @@ class Search extends React.Component {
       <div className="search">
         <button onClick={() => {this.props.swapFavorites()}}>{this.props.showFaves ? "Show Results" : "Show Favorites"}</button>
         <br/><br/>
-
-        {/* Make the select options dynamic from genres !!! */}
-        {/* How can you tell which option has been selected from here? */}
-
         <select onChange = {this.props.switchGenre}>
           {this.state.genres.map((genre) => {
             return <option value = {genre.name} >{genre.name}</option>
