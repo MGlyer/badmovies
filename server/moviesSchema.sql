@@ -1,9 +1,11 @@
 -- SET UP SCHEMA HERE
-CREATE DATABASE favorites;
+CREATE DATABASE badmovies;
 
-USE favorites
+USE badmovies
 
-CREATE TABLE movies2 (
+-- DROP TABLE IF EXISTS movies
+
+CREATE TABLE movies (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(150),
     img VARCHAR(100),

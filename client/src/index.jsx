@@ -23,6 +23,20 @@ class App extends React.Component {
     this.saveMovie = this.saveMovie.bind(this)
     this.deleteMovie = this.deleteMovie.bind(this)
     this.swapFavorites = this.swapFavorites.bind(this)
+    this.getFavorites = this.getFavorites.bind(this)
+  }
+
+  componentDidMount() {
+    this.getFavorites()
+  }
+
+  getFavorites() {
+    axios.get('/favorites')
+         .then((response) => {
+           this.setState({
+             favorites: response.data
+           })
+         })
   }
 
   swapGenre(e) {

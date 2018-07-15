@@ -26,10 +26,8 @@ app.post('/search', function(req, res) {
 });
 
 app.get('/genres', function(req, res) {
-    // console.log('in the server, looking for genres')
     axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${APIKEY}`)
          .then((response) => {
-            //  console.log('in the server, response of genres', response.data)
              res.send(response.data)
          })
          .catch((err) => {
@@ -39,13 +37,27 @@ app.get('/genres', function(req, res) {
 
 app.post('/save', function(req, res) {
     let fave = req.body.newFave;
-    //save to DB
-    res.send('saved to the DB!')
+    database.saveFavorite(fave, (err) => {
+        if (err) console.error(err)
+        else res.send('saved to the DB!')
+    })
+    
 });
 
 app.post('/delete', function(req, res) {
-
+    let target = req.body.toDel
+    database.deleteFavorite([target], (err) => {
+        if (err) console.error(err)
+        else res.send('its been removed from the database')
+    })
 });
+
+app.get('/favorites', function(req, res) {
+    database.getAllFavorites((err, favorites) => {
+        if (err) console.error(err)
+        else res.send(favorites)
+    })
+})
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
