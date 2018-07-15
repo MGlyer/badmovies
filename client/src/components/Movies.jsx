@@ -3,6 +3,9 @@ import React from 'react';
 class Movies extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      movies: this.props.movies
+    }
 
   }
 
@@ -15,12 +18,9 @@ class Movies extends React.Component {
   render() {
     return (
       <ul className="movies">
-
-
-        {/* Make this list dynamic! */}
-        {this.props.movies.map((movie) => {
+        {this.props.movies.map((movie) => { return (
           <li className="movie_item">
-            <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             <div className="movie_description">
               <h2>{movie.title}</h2>
               <section className="movie_details">
@@ -35,7 +35,7 @@ class Movies extends React.Component {
               </section>
             </div>
           </li>
-        })}
+        )})}
 
       </ul>
     );
