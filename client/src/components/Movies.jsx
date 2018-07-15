@@ -26,7 +26,7 @@ class Movies extends React.Component {
               <section className="movie_details">
                 <div className="movie_year">
                   <span className="title">Year</span>
-                  <span>{ movie.release_date ? movie.release_date.split('').slice(0,4).join('') : movie.date.split('').slice(0,4).join('')}</span>
+                  <span>{movie.release_date.split('').slice(0,4).join('')}</span>
                 </div>
                 <div className="movie_rating">
                   <span className="title">Rating</span>

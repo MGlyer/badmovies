@@ -14,7 +14,7 @@ const getAllFavorites = function(callback) {
 
 const saveFavorite = function(movie, callback) {
   params = [movie.title, movie.poster_path, movie.vote_count, movie.release_date]
-  connection.query('INSERT INTO `movies` (title, img, votes, date) VALUES (?, ?, ?, ?)', params, (err, results) => {
+  connection.query('INSERT INTO `movies` (title, img, votes, release_date) VALUES (?, ?, ?, ?)', params, (err, results) => {
     if (err) callback(err)
     else callback(null)
   })

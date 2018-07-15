@@ -10,6 +10,6 @@ CREATE TABLE movies (
     title VARCHAR(150),
     img VARCHAR(100),
     votes INT,
-    date VARCHAR(100),
+    release_date VARCHAR(100),
     PRIMARY KEY (ID)
 );
